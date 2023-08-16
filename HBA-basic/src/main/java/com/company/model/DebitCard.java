@@ -22,6 +22,6 @@ public class DebitCard extends BankCard {
 
     @Override
     public Map<String, Integer> getAllAvailableFunds() {
-        return this.baseGetAllAvailableFunds();
+        return super.getAllAvailableFunds();
     }
 }

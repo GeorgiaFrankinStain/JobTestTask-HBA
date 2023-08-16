@@ -1,5 +1,6 @@
 package com.company.model;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,12 +22,9 @@ public abstract class BankCard {
 
     public abstract int getAvailableCreditFacilities();
 
-    public abstract Map<String, Integer> getAllAvailableFunds();
-
-
-    protected Map<String, Integer> baseGetAllAvailableFunds() {
+    public Map<String, Integer> getAllAvailableFunds() {
         Map<String, Integer> funds = new HashMap<>();
         funds.put("balance", balance);
-        return funds;
+        return Collections.unmodifiableMap(funds);
     }
 }

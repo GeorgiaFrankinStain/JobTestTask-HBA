@@ -1,12 +1,16 @@
 package com.company.model;
 
+import java.util.Collections;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class CreditCard extends BankCard {
     private int limit = 0;
     private int balanceForDebtNegative = 0; //the value is always less than 0
 
-
+    public CreditCard(int limit) {
+        this.limit = limit;
+    }
 
     public void upBalance(int addedMoney) {
         assert (addedMoney >= 0);
@@ -39,9 +43,10 @@ public class CreditCard extends BankCard {
 
     @Override
     public Map<String, Integer> getAllAvailableFunds() {
-        Map<String, Integer> funds = this.baseGetAllAvailableFunds();
+        Map<String, Integer> funds = super.getAllAvailableFunds().entrySet().stream()
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
         funds.put("availableCreditFacilities", balanceForDebtNegative);
-        return funds;
+        return Collections.unmodifiableMap(funds);
     }
 
     public int getLimit() {

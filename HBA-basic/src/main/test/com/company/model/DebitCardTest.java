@@ -2,6 +2,9 @@ package com.company.model;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class DebitCardTest {
@@ -59,4 +62,20 @@ class DebitCardTest {
         assertEquals(card.getBalance(), 10);
     }
     //<generalTests>
+
+
+
+    @Test
+    void getAllAvailableFunds() {
+        BankCard card = new DebitCard();
+        card.upBalance(2000);
+        card.toPay(1000);
+        System.out.println(card.getAllAvailableFunds());
+        Map<String, Integer> actualFunds = card.getAllAvailableFunds();
+        Map<String, Integer> expectedFunds = new HashMap<>();
+        expectedFunds.put("balance", 1000);
+
+
+        assertEquals(expectedFunds, actualFunds);
+    }
 }

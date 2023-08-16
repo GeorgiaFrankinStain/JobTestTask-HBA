@@ -1,6 +1,8 @@
 package com.company.model;
 
+import java.util.Collections;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class AccumulationUpMoney extends DebitCard {
     private double accumulateMoney = 0;
@@ -20,9 +22,10 @@ public class AccumulationUpMoney extends DebitCard {
 
     @Override
     public Map<String, Integer> getAllAvailableFunds() {
-        Map<String, Integer> funds = super.getAllAvailableFunds();
+        Map<String, Integer> funds = super.getAllAvailableFunds().entrySet().stream()
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
         funds.put("accumulateMoney", (int) this.getAccumulateMoney());
-        return funds;
+        return Collections.unmodifiableMap(funds);
     }
 
     public int getAccumulateMoney() {
