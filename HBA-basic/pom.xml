@@ -29,6 +29,8 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.1.2</version>
 
+
+
                 <dependencies>
                     <dependency>
                         <groupId>org.junit.jupiter</groupId>
@@ -36,6 +38,20 @@
                         <version>5.9.1</version>
                     </dependency>
                 </dependencies>
+            </plugin>
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.company.Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
             </plugin>
         </plugins>
     </build>

@@ -2,3 +2,5 @@ com/company/Main.class
 com/company/model/DebitCard.class
 com/company/model/CreditCard.class
 com/company/model/BankCard.class
+com/company/model/BonusDebitCard.class
+com/company/model/AccumulationUpMoney.class
