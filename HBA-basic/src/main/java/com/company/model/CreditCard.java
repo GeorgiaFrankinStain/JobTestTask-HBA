@@ -45,7 +45,7 @@ public class CreditCard extends BankCard {
     public Map<String, Integer> getAllAvailableFunds() {
         Map<String, Integer> funds = super.getAllAvailableFunds().entrySet().stream()
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-        funds.put("availableCreditFacilities", balanceForDebtNegative);
+        funds.put("availableCreditFacilities", this.getAvailableCreditFacilities());
         return Collections.unmodifiableMap(funds);
     }
 
